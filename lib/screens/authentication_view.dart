@@ -4,15 +4,15 @@ import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Authentication extends StatefulWidget {
-  const Authentication({super.key});
+class AuthenticationScreen extends StatefulWidget {
+  const AuthenticationScreen({super.key});
 
   @override
-  State<Authentication> createState() => _AuthenticationState();
+  State<AuthenticationScreen> createState() => _AuthenticationScreenState();
 }
 
-class _AuthenticationState extends State<Authentication> {
-  List<FocusNode> _focusNodes = [
+class _AuthenticationScreenState extends State<AuthenticationScreen> {
+  final List<FocusNode> _focusNodes = [
     FocusNode(),
     FocusNode(),
   ];
