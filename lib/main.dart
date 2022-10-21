@@ -1,3 +1,4 @@
+import 'package:cookbook/screens/authentication_view.dart';
 import 'package:cookbook/screens/home_view.dart';
 import 'package:flutter/material.dart';
 
@@ -12,11 +13,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Cook Book',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
       ),
-      initialRoute: '/',
+      initialRoute: '/auth',
       routes: {
-        '/':(context) => const HomeScreen(),
+        '/': (context) => const HomeScreen(),
+        '/auth': (context) => const Authentication(),
       },
     );
   }
