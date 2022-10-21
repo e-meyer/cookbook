@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AuthField extends StatefulWidget {
-  AuthField(
-      {super.key,
-      required this.focusNode,
-      required this.hintText,
-      required this.prefixIcon,
-      required this.controller,
-      this.password});
+  AuthField({
+    super.key,
+    required this.focusNode,
+    required this.hintText,
+    required this.prefixIcon,
+    required this.controller,
+    this.password,
+  });
 
   final FocusNode focusNode;
   final String hintText;

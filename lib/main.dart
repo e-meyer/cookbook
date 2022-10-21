@@ -1,5 +1,6 @@
 import 'package:cookbook/screens/authentication_view.dart';
 import 'package:cookbook/screens/home_view.dart';
+import 'package:cookbook/screens/navigator.dart';
 import 'package:cookbook/screens/register_view.dart';
 import 'package:flutter/material.dart';
 
@@ -17,9 +18,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      initialRoute: '/auth',
+      initialRoute: '/',
       routes: {
-        '/': (context) => const HomeScreen(),
+        '/': (context) => const NavigatorScreen(),
         '/auth': (context) => const AuthenticationScreen(),
         '/register': (context) => const RegisterScreen(),
       },
