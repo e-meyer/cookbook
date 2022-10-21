@@ -185,6 +185,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       const SizedBox(height: 50),
                       ElevatedButton(
                         onPressed: () {
+                          //print(_formKey.currentState!.validate());
                           if (_formKey.currentState!.validate()) {
                             Navigator.pushNamedAndRemoveUntil(
                               context,

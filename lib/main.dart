@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      initialRoute: '/register',
+      initialRoute: '/auth',
       routes: {
         '/': (context) => const HomeScreen(),
         '/auth': (context) => const AuthenticationScreen(),

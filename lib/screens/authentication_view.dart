@@ -27,6 +27,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
     super.initState();
   }
 
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -87,97 +88,105 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
               height: MediaQuery.of(context).size.height * 0.75,
               child: Padding(
                 padding: const EdgeInsets.only(left: 30, right: 30),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'E-mail',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 16,
-                          color: ColorPallete.primaryText,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-
-                    // Email Authentication Field
-
-                    AuthField(
-                      focusNode: _focusNodes[0],
-                      hintText: 'Enter your e-mail',
-                      prefixIcon: Icons.email,
-                      controller: _emailController,
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Password',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 16,
-                          color: ColorPallete.primaryText,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-
-                    // Password Authentication Field
-
-                    AuthField(
-                      focusNode: _focusNodes[1],
-                      hintText: 'Enter your password',
-                      prefixIcon: Icons.key,
-                      controller: _passwordController,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: Align(
-                        alignment: Alignment.topRight,
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Email Field
+                      Align(
+                        alignment: Alignment.topLeft,
                         child: Text(
-                          'Forgot your password?',
+                          'E-mail',
                           style: GoogleFonts.montserrat(
-                            color: ColorPallete.darkGrey,
+                            fontSize: 16,
+                            color: ColorPallete.primaryText,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        minimumSize: const Size.fromHeight(55),
-                        elevation: 0,
-                        backgroundColor: ColorPallete.darkPurple,
+                      const SizedBox(
+                        height: 5,
                       ),
-                      child: Text(
-                        'Login',
-                        style: GoogleFonts.montserrat(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18,
+                      AuthField(
+                        focusNode: _focusNodes[0],
+                        hintText: 'Enter your e-mail',
+                        prefixIcon: Icons.email,
+                        controller: _emailController,
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+
+                      // Password Field
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          'Password',
+                          style: GoogleFonts.montserrat(
+                            fontSize: 16,
+                            color: ColorPallete.primaryText,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const SignupSection(),
-                  ],
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      AuthField(
+                        focusNode: _focusNodes[1],
+                        hintText: 'Enter your password',
+                        prefixIcon: Icons.key,
+                        controller: _passwordController,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: Text(
+                            'Forgot your password?',
+                            style: GoogleFonts.montserrat(
+                              color: ColorPallete.darkGrey,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              '/auth',
+                              (route) => false,
+                            );
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          minimumSize: const Size.fromHeight(55),
+                          elevation: 0,
+                          backgroundColor: ColorPallete.darkPurple,
+                        ),
+                        child: Text(
+                          'Login',
+                          style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const SignupSection(),
+                    ],
+                  ),
                 ),
               ),
             ),

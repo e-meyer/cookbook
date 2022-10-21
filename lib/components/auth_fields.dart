@@ -89,9 +89,10 @@ class _AuthFieldState extends State<AuthField> {
   _passwordValidator(value) {
     if (value.isEmpty) {
       return 'Input a password';
-    } else if (value != widget.password) {
+    } else if (widget.password != null && value != widget.password) {
       return 'Passwords must be equal';
     }
+
     return null;
   }
 }
