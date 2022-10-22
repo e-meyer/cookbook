@@ -11,8 +11,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,43 +34,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const RecipeCard(
                   recipeImage:
-                      'https:\/\/www.themealdb.com\/images\/media\/meals\/yypwwq1511304979.jpg',
-                  recipeName: 'Spicy Arrabiata Penne',
+                      'https:\/\/www.themealdb.com\/images\/media\/meals\/qqwypw1504642429.jpg',
+                  recipeName: 'Vietnamese Grilled Pork',
+                ),
+                const RecipeCard(
+                  recipeImage:
+                      'https:\/\/www.themealdb.com\/images\/media\/meals\/urzj1d1587670726.jpg',
+                  recipeName: 'Big Mac',
                 ),
               ],
             ),
           ),
         ),
       ),
-      
-      // bottomNavigationBar: BottomNavigationBar(
-      //   showUnselectedLabels: false,
-      //   selectedItemColor: ColorPallete.darkPurple,
-      //   unselectedItemColor: ColorPallete.primaryText,
-      //   currentIndex: 0,
-      //   items: [
-      //     BottomNavigationBarItem(
-      //       icon: SvgPicture.asset('assets/icons/home.svg'),
-      //       label: 'Home',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: SvgPicture.asset('assets/icons/search.svg'),
-      //       label: 'Search',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: SvgPicture.asset('assets/icons/favourite.svg'),
-      //       label: 'Favourites',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: SvgPicture.asset('assets/icons/page-flip.svg'),
-      //       label: 'Recipes',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: SvgPicture.asset('assets/icons/profile.svg'),
-      //       label: 'Profile',
-      //     ),
-      //   ],
-      // ),
     );
   }
 }
