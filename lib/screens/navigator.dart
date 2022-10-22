@@ -1,9 +1,11 @@
+import 'package:cookbook/components/custom_navbar_item.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
+import 'package:cookbook/screens/favourites_view.dart';
+import 'package:cookbook/screens/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:cookbook/screens/home_view.dart';
 import 'package:cookbook/screens/search_view.dart';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class NavigatorScreen extends StatefulWidget {
   const NavigatorScreen({super.key});
@@ -13,12 +15,14 @@ class NavigatorScreen extends StatefulWidget {
 }
 
 class _NavigatorScreenState extends State<NavigatorScreen> {
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   int _selectedIndex = 0;
 
-  List<Widget> _screens = [
-    HomeScreen(),
-    SearchScreen(),
+  final List<Widget> _screens = [
+    const HomeScreen(),
+    const SearchScreen(),
+    const FavouritesScreen(),
+    const ProfileScreen(),
   ];
 
   void _onPageChanged(int index) {
@@ -38,59 +42,39 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
       // body: _screens[_selectedIndex],
       body: PageView(
         controller: _pageController,
-        children: _screens,
         onPageChanged: _onPageChanged,
+        children: _screens,
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.only(bottom: 10),
         child: CustomNavigationBar(
           isFloating: true,
           elevation: 4,
           iconSize: 30,
-          borderRadius: Radius.circular(20),
-          strokeColor: ColorPallete.darkPurple,
-          selectedColor: ColorPallete.darkPurple,
+          borderRadius: const Radius.circular(20),
+          strokeColor: ColorPallete.darkOrange,
+          selectedColor: ColorPallete.darkOrange,
           unSelectedColor: ColorPallete.primaryText,
           items: [
-            CustomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/icons/home.svg',
-                color: _selectedIndex == 0
-                    ? ColorPallete.darkPurple
-                    : ColorPallete.primaryText,
-              ),
+            CustomNavbarItem.navbarItem(
+              'assets/icons/home.svg',
+              0,
+              _selectedIndex,
             ),
-            CustomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/icons/search.svg',
-                color: _selectedIndex == 1
-                    ? ColorPallete.darkPurple
-                    : ColorPallete.primaryText,
-              ),
+            CustomNavbarItem.navbarItem(
+              'assets/icons/search.svg',
+              1,
+              _selectedIndex,
             ),
-            CustomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/icons/favourite.svg',
-                color: _selectedIndex == 2
-                    ? ColorPallete.darkPurple
-                    : ColorPallete.primaryText,
-              ),
+            CustomNavbarItem.navbarItem(
+              'assets/icons/favourite.svg',
+              2,
+              _selectedIndex,
             ),
-            CustomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/icons/page-flip.svg',
-                color: _selectedIndex == 3
-                    ? ColorPallete.darkPurple
-                    : ColorPallete.primaryText,
-              ),
-            ),
-            CustomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/icons/profile.svg',
-                color: _selectedIndex == 4
-                    ? ColorPallete.darkPurple
-                    : ColorPallete.primaryText,
-              ),
+            CustomNavbarItem.navbarItem(
+              'assets/icons/profile.svg',
+              3,
+              _selectedIndex,
             ),
           ],
           onTap: _onItemTapped,

@@ -1,6 +1,7 @@
 import 'package:cookbook/screens/authentication_view.dart';
 import 'package:cookbook/screens/home_view.dart';
 import 'package:cookbook/screens/navigator.dart';
+import 'package:cookbook/screens/recipe_view.dart';
 import 'package:cookbook/screens/register_view.dart';
 import 'package:flutter/material.dart';
 
@@ -18,11 +19,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      initialRoute: '/',
+      initialRoute: '/auth',
       routes: {
         '/': (context) => const NavigatorScreen(),
+        '/home': (context) => const HomeScreen(),
         '/auth': (context) => const AuthenticationScreen(),
         '/register': (context) => const RegisterScreen(),
+        '/recipe-details': (context) => const RecipeDetailsScreen(),
       },
     );
   }
