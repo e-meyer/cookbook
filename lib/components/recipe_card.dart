@@ -27,6 +27,9 @@ class RecipeCard extends StatelessWidget {
           ],
         ),
         child: ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/recipe-details');
+          },
           style: ElevatedButton.styleFrom(
             elevation: 0,
             backgroundColor: ColorPallete.plainWhite,
@@ -35,7 +38,6 @@ class RecipeCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-          onPressed: () {},
           child: Column(
             children: [
               Stack(
@@ -55,7 +57,7 @@ class RecipeCard extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 310, left: 10),
+                    padding: const EdgeInsets.only(top: 310, left: 10),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -63,9 +65,9 @@ class RecipeCard extends StatelessWidget {
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 10,
-                            color: Color(0xFF808080).withOpacity(0.2),
+                            color: const Color(0xFF808080).withOpacity(0.2),
                             spreadRadius: 0,
-                            offset: Offset(0, 5),
+                            offset: const Offset(0, 5),
                           )
                         ],
                       ),
@@ -74,11 +76,11 @@ class RecipeCard extends StatelessWidget {
                         backgroundColor: ColorPallete.plainWhite,
                         child: IconButton(
                           padding: EdgeInsets.zero,
-                          constraints: BoxConstraints(),
+                          constraints: const BoxConstraints(),
                           onPressed: () {},
                           icon: const Icon(
                             Icons.favorite_border,
-                            color: ColorPallete.darkPurple,
+                            color: ColorPallete.darkOrange,
                           ),
                         ),
                       ),
@@ -98,6 +100,7 @@ class RecipeCard extends StatelessWidget {
                         fontSize: 16,
                         letterSpacing: 1,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                     const SizedBox(
                       height: 5,
@@ -107,7 +110,7 @@ class RecipeCard extends StatelessWidget {
                       children: [
                         const Icon(
                           Icons.fastfood_outlined,
-                          color: ColorPallete.lightPurple,
+                          color: ColorPallete.lightOrange,
                           size: 15,
                         ),
                         const SizedBox(
@@ -126,7 +129,7 @@ class RecipeCard extends StatelessWidget {
                         ),
                         const Icon(
                           Icons.list_alt,
-                          color: ColorPallete.lightPurple,
+                          color: ColorPallete.lightOrange,
                           size: 15,
                         ),
                         const SizedBox(
