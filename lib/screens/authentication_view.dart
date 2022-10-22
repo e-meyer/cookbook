@@ -1,4 +1,5 @@
 import 'package:cookbook/components/auth_fields.dart';
+import 'package:cookbook/components/auth_labels.dart';
 import 'package:cookbook/components/signup_section.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorPallete.darkPurple,
+      backgroundColor: ColorPallete.darkOrange,
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
@@ -92,19 +93,10 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                   key: _formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Email Field
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'E-mail',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 16,
-                            color: ColorPallete.primaryText,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
+                      const AuthLabel(fieldLabel: 'E-mail'),
                       const SizedBox(
                         height: 5,
                       ),
@@ -119,17 +111,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                       ),
 
                       // Password Field
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'Password',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 16,
-                            color: ColorPallete.primaryText,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
+                      const AuthLabel(fieldLabel: 'Password'),
                       const SizedBox(
                         height: 5,
                       ),
@@ -171,7 +153,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                           ),
                           minimumSize: const Size.fromHeight(55),
                           elevation: 0,
-                          backgroundColor: ColorPallete.darkPurple,
+                          backgroundColor: ColorPallete.darkOrange,
                         ),
                         child: Text(
                           'Login',

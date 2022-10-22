@@ -47,12 +47,12 @@ class _AuthFieldState extends State<AuthField> {
         suffixIcon: Icon(
           widget.prefixIcon,
           color:
-              widget.focusNode.hasFocus ? ColorPallete.darkPurple : Colors.grey,
+              widget.focusNode.hasFocus ? ColorPallete.darkOrange : Colors.grey,
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
-            color: ColorPallete.lightPurple,
+            color: ColorPallete.lightOrange,
           ),
         ),
         errorBorder: OutlineInputBorder(
@@ -61,11 +61,11 @@ class _AuthFieldState extends State<AuthField> {
             color: ColorPallete.darkGrey,
           ),
         ),
-        suffixIconColor: ColorPallete.lightPurple,
+        suffixIconColor: ColorPallete.lightOrange,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
-            color: ColorPallete.lightPurple,
+            color: ColorPallete.lightOrange,
           ),
         ),
         enabledBorder: OutlineInputBorder(

@@ -1,4 +1,5 @@
 import 'package:cookbook/components/auth_fields.dart';
+import 'package:cookbook/components/auth_labels.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,7 +38,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorPallete.darkPurple,
+      backgroundColor: ColorPallete.darkOrange,
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
@@ -94,20 +95,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: Form(
                   key: _formKey,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Name Field
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'Full Name',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 16,
-                            color: ColorPallete.primaryText,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
+                      const AuthLabel(fieldLabel: 'Full Name'),
                       const SizedBox(height: 5),
                       AuthField(
                         focusNode: _focusNodes[0],
@@ -117,18 +108,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 30),
 
-                      // E-mail Field
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'E-mail',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 16,
-                            color: ColorPallete.primaryText,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
+                      const AuthLabel(fieldLabel: 'E-mail'),
                       const SizedBox(height: 5),
                       AuthField(
                         focusNode: _focusNodes[1],
@@ -138,18 +118,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 30),
 
-                      // Password Field
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'Password',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 16,
-                            color: ColorPallete.primaryText,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
+                      const AuthLabel(fieldLabel: 'Password'),
                       const SizedBox(height: 5),
                       AuthField(
                         focusNode: _focusNodes[2],
@@ -160,20 +129,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 30),
 
-                      // Password Confirm Field
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'Confirm Password',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 16,
-                            color: ColorPallete.primaryText,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
+                      const AuthLabel(fieldLabel: 'Confirm Password'),
                       const SizedBox(height: 5),
-
                       AuthField(
                         focusNode: _focusNodes[3],
                         hintText: 'Confirm your password',
@@ -204,7 +161,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           minimumSize: const Size.fromHeight(55),
                           elevation: 0,
-                          backgroundColor: ColorPallete.darkPurple,
+                          backgroundColor: ColorPallete.darkOrange,
                         ),
                         child: Text(
                           'Register',
