@@ -1,3 +1,5 @@
+import 'package:cookbook/components/favourite_button.dart';
+import 'package:cookbook/components/recipe_details.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,17 +7,21 @@ import 'package:google_fonts/google_fonts.dart';
 class RecipeCard extends StatelessWidget {
   const RecipeCard({
     super.key,
-    required this.recipeName,
-    required this.recipeImage,
+    required this.name,
+    required this.image,
+    required this.numIngredients,
+    required this.numSteps,
   });
 
-  final String recipeName;
-  final String recipeImage;
+  final String name;
+  final String image;
+  final int numIngredients;
+  final int numSteps;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
+      padding: const EdgeInsets.fromLTRB(25, 0, 25, 20),
       child: Container(
         decoration: BoxDecoration(
           boxShadow: <BoxShadow>[
@@ -28,7 +34,7 @@ class RecipeCard extends StatelessWidget {
         ),
         child: ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/recipe-details');
+            Navigator.pushNamed(context, 'recipe-details');
           },
           style: ElevatedButton.styleFrom(
             elevation: 0,
@@ -51,101 +57,23 @@ class RecipeCard extends StatelessWidget {
                       height: 345,
                       width: 345,
                       child: Image.network(
-                        recipeImage,
+                        image,
                         fit: BoxFit.fill,
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 310, left: 10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 10,
-                            color: const Color(0xFF808080).withOpacity(0.2),
-                            spreadRadius: 0,
-                            offset: const Offset(0, 5),
-                          )
-                        ],
-                      ),
-                      child: CircleAvatar(
-                        radius: 30,
-                        backgroundColor: ColorPallete.plainWhite,
-                        child: IconButton(
-                          padding: EdgeInsets.zero,
-                          constraints: const BoxConstraints(),
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.favorite_border,
-                            color: ColorPallete.darkOrange,
-                          ),
-                        ),
-                      ),
-                    ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 310, left: 10),
+                    child: FavouriteButton(),
                   ),
                 ],
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 35),
-                child: Column(
-                  children: [
-                    Text(
-                      recipeName.toUpperCase(),
-                      style: GoogleFonts.montserrat(
-                        color: ColorPallete.primaryText,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        letterSpacing: 1,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.fastfood_outlined,
-                          color: ColorPallete.lightOrange,
-                          size: 15,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          '3 ingredients',
-                          style: GoogleFonts.montserrat(
-                            color: ColorPallete.secondaryText,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 13,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        const Icon(
-                          Icons.list_alt,
-                          color: ColorPallete.lightOrange,
-                          size: 15,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          '10 steps',
-                          style: GoogleFonts.montserrat(
-                            color: ColorPallete.secondaryText,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 13,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                child: RecipeDetails(
+                  recipeName: name,
+                  numIngredients: numIngredients,
+                  numSteps: numSteps,
                 ),
               ),
             ],
