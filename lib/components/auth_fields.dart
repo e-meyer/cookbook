@@ -31,9 +31,9 @@ class _AuthFieldState extends State<AuthField> {
         if (widget.hintText.contains('password')) {
           return _passwordValidator(value);
         } else if (widget.hintText.contains('name')) {
-          print('2');
+          // print('2');
         } else if (widget.hintText.contains('e-mail')) {
-          print('3');
+          // print('3');
         }
         if (value == null || value.isEmpty) {
           return 'Empty field';

@@ -35,7 +35,7 @@ class SignupSection extends StatelessWidget {
             style: GoogleFonts.montserrat(
               fontWeight: FontWeight.w600,
               fontSize: 14,
-              color: ColorPallete.darkPurple,
+              color: ColorPallete.darkOrange,
             ),
           ),
         ),
