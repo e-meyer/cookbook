@@ -1,13 +1,12 @@
+import 'package:cookbook/components/favourite_button.dart';
 import 'package:cookbook/components/recipe_details.dart';
+import 'package:cookbook/components/close_button.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:cookbook/models/recipe.dart';
 import 'package:flutter/material.dart';
 
 class RecipeDetailsScreen extends StatelessWidget {
-  const RecipeDetailsScreen({
-    super.key,
-    required this.recipe,
-  });
+  const RecipeDetailsScreen({super.key, required this.recipe});
 
   final Recipe recipe;
 
@@ -27,14 +26,22 @@ class RecipeDetailsScreen extends StatelessWidget {
                   image: recipe.image,
                 ),
               ),
+              const Padding(
+                padding: EdgeInsets.only(top: 360, left: 30),
+                child: FavouriteButton(),
+              ),
+              const Align(
+                alignment: Alignment.topRight,
+                child: CloseViewButton(),
+              ),
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(
+          Padding(
+            padding: const EdgeInsets.symmetric(
               vertical: 30,
             ),
             child: RecipeDetails(
-              recipeName: 'Fish stew with rouille',
+              recipeName: recipe.name,
               numIngredients: 5,
               numSteps: 3,
             ),

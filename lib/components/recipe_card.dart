@@ -31,14 +31,7 @@ class RecipeCard extends StatelessWidget {
             Navigator.pushNamed(
               context,
               'recipe-details',
-              arguments: Recipe(
-                name: recipe.name,
-                image: recipe.image,
-                ingredientsList: recipe.ingredientsList,
-                instructionsList: recipe.instructionsList,
-                numIngredients: recipe.numIngredients,
-                numInstructions: recipe.numInstructions,
-              ),
+              arguments: recipe,
             );
           },
           style: ElevatedButton.styleFrom(
