@@ -1,32 +1,19 @@
-import 'package:cookbook/screens/authentication_view.dart';
-import 'package:cookbook/screens/home_view.dart';
-import 'package:cookbook/screens/navigator.dart';
-import 'package:cookbook/screens/recipe_view.dart';
-import 'package:cookbook/screens/register_view.dart';
+import 'package:cookbook/router_generator.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const CookbookApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CookbookApp extends StatelessWidget {
+  const CookbookApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Cook Book',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-      ),
-      initialRoute: '/auth',
-      routes: {
-        '/': (context) => const NavigatorScreen(),
-        '/home': (context) => const HomeScreen(),
-        '/auth': (context) => const AuthenticationScreen(),
-        '/register': (context) => const RegisterScreen(),
-        '/recipe-details': (context) => const RecipeDetailsScreen(),
-      },
+      initialRoute: 'home',
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }
