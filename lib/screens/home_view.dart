@@ -25,6 +25,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> getRecipes() async {
     _recipes = await RecipeService().getRecipe();
+    _recipes.shuffle();
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  Future<void> refresh() async {
+    setState(() {
+      _isLoading = true;
+    });
+    _recipes = await RecipeService().getRecipe();
+    _recipes.shuffle();
     setState(() {
       _isLoading = false;
     });
@@ -36,29 +48,32 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: ColorPallete.lightGrey,
       body: Padding(
         padding: const EdgeInsets.only(top: 30),
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              SvgPicture.asset('assets/cookbook-logo.svg'),
-              _isLoading
-                  ? SizedBox(
-                      height: MediaQuery.of(context).size.height,
-                      child: const Center(
-                        child: CircularProgressIndicator(),
+        child: RefreshIndicator(
+          onRefresh: refresh,
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                SvgPicture.asset('assets/cookbook-logo.svg'),
+                _isLoading
+                    ? SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        child: const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      )
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: _recipes.length,
+                        itemBuilder: (context, index) {
+                          return RecipeCard(
+                            recipe: _recipes[index],
+                          );
+                        },
                       ),
-                    )
-                  : ListView.builder(
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: _recipes.length,
-                      itemBuilder: (context, index) {
-                        return RecipeCard(
-                          recipe: _recipes[index],
-                        );
-                      },
-                    ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
