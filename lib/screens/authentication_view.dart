@@ -1,5 +1,5 @@
-import 'package:cookbook/components/auth_fields.dart';
-import 'package:cookbook/components/auth_labels.dart';
+import 'package:cookbook/components/authentication/auth_fields.dart';
+import 'package:cookbook/components/authentication/auth_labels.dart';
 import 'package:cookbook/components/signup_section.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:flutter/material.dart';
