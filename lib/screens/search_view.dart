@@ -1,5 +1,9 @@
-import 'package:cookbook/components/search_recipe_card.dart';
+import 'package:cookbook/components/search/search_skeleton.dart';
+import 'package:cookbook/components/search/search_skeleton_card.dart';
+import 'package:cookbook/components/search/search_not_found.dart';
+import 'package:cookbook/components/search/search_recipe_card.dart';
 import 'package:cookbook/components/search_bar.dart';
+import 'package:cookbook/components/search/search_result.dart';
 import 'package:cookbook/helpers/debouncer.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,7 +24,7 @@ class _SearchScreenState extends State<SearchScreen>
     with AutomaticKeepAliveClientMixin {
   List<Recipe>? _recipes = [];
 
-  bool _isLoading = true;
+  bool _isLoading = false;
 
   Future<void> getRecipes(String searchArgs) async {
     setState(() {
@@ -41,6 +45,7 @@ class _SearchScreenState extends State<SearchScreen>
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             child: Column(
@@ -56,23 +61,10 @@ class _SearchScreenState extends State<SearchScreen>
                 const SizedBox(height: 8),
                 Searchbar(getRecipes: getRecipes),
                 _isLoading
-                    ? CircularProgressIndicator()
+                    ? const SearchSkeleton()
                     : _recipes != null
-                        ? GridView.builder(
-                            physics: NeverScrollableScrollPhysics(),
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              mainAxisSpacing: 15,
-                              crossAxisSpacing: 15,
-                              crossAxisCount: 2,
-                            ),
-                            shrinkWrap: true,
-                            itemCount: _recipes!.length,
-                            itemBuilder: (context, index) {
-                              return SearchRecipeCard(recipe: _recipes![index]);
-                            },
-                          )
-                        : Text('Tem nada')
+                        ? SearchResults(recipes: _recipes!)
+                        : const SearchNotFound(),
               ],
             ),
           ),

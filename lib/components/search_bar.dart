@@ -24,7 +24,6 @@ class _SearchbarState extends State<Searchbar> {
     return TextField(
       onChanged: (string) {
         _debouncer.run(() {
-          print(string);
           widget.getRecipes(string);
         });
       },
