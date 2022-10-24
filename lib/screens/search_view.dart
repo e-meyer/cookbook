@@ -2,7 +2,7 @@ import 'package:cookbook/components/search/search_skeleton.dart';
 import 'package:cookbook/components/search/search_skeleton_card.dart';
 import 'package:cookbook/components/search/search_not_found.dart';
 import 'package:cookbook/components/search/search_recipe_card.dart';
-import 'package:cookbook/components/search_bar.dart';
+import 'package:cookbook/components/search/search_bar.dart';
 import 'package:cookbook/components/search/search_result.dart';
 import 'package:cookbook/helpers/debouncer.dart';
 import 'package:flutter/rendering.dart';

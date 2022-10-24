@@ -1,4 +1,4 @@
-import 'package:cookbook/components/loading_skeletons/skeleton_background.dart';
+import 'package:cookbook/components/skeleton_background.dart';
 import 'package:flutter/material.dart';
 
 class RecipeCardSkeleton extends StatelessWidget {

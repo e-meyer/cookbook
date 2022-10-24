@@ -1,6 +1,6 @@
-import 'package:cookbook/components/tab_bar_contents/brief.dart';
-import 'package:cookbook/components/tab_bar_contents/ingredients.dart';
-import 'package:cookbook/components/tab_bar_text.dart';
+import 'package:cookbook/components/recipe_view_tabbar/tabbar_contents/brief.dart';
+import 'package:cookbook/components/recipe_view_tabbar/tabbar_contents/ingredients.dart';
+import 'package:cookbook/components/recipe_view_tabbar/tab_bar_text.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:flutter/material.dart';
 import 'package:cookbook/models/recipe.dart';
