@@ -16,11 +16,17 @@ class Recipe {
   });
 
   factory Recipe.fromJson(json) {
-    final instructionsList =
-        json['strInstructions'].toString().replaceAll('STEP', '').split('\r\n');
+    RegExp exp = RegExp(r'(\b((STEP) \d)+\b)');
 
-    // Some instructions come with double '\r\n' so to make sure to remove those empty lines
-    instructionsList.removeWhere(((element) => element.isEmpty));
+    final instructionsList = json['strInstructions']
+        .toString()
+        .replaceAll(exp, '')
+        .replaceAll('\r\n', ' ')
+        .replaceAll('. (', '. ')
+        .replaceAll('.) ', '. ')
+        .split('. ');
+
+    // for (var item in instructionsList) print(item.trimLeft());
 
     final ingredientsList = [];
     int ingIndex = 1;
