@@ -1,22 +1,16 @@
 import 'package:cookbook/components/favourite_button.dart';
 import 'package:cookbook/components/recipe_details.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
+import 'package:cookbook/models/recipe.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class RecipeCard extends StatelessWidget {
   const RecipeCard({
     super.key,
-    required this.name,
-    required this.image,
-    required this.numIngredients,
-    required this.numSteps,
+    required this.recipe,
   });
 
-  final String name;
-  final String image;
-  final int numIngredients;
-  final int numSteps;
+  final Recipe recipe;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +28,18 @@ class RecipeCard extends StatelessWidget {
         ),
         child: ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, 'recipe-details');
+            Navigator.pushNamed(
+              context,
+              'recipe-details',
+              arguments: Recipe(
+                name: recipe.name,
+                image: recipe.image,
+                ingredientsList: recipe.ingredientsList,
+                instructionsList: recipe.instructionsList,
+                numIngredients: recipe.numIngredients,
+                numInstructions: recipe.numInstructions,
+              ),
+            );
           },
           style: ElevatedButton.styleFrom(
             elevation: 0,
@@ -57,7 +62,7 @@ class RecipeCard extends StatelessWidget {
                       height: 345,
                       width: 345,
                       child: Image.network(
-                        image,
+                        recipe.image,
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -71,9 +76,9 @@ class RecipeCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 35),
                 child: RecipeDetails(
-                  recipeName: name,
-                  numIngredients: numIngredients,
-                  numSteps: numSteps,
+                  recipeName: recipe.name,
+                  numIngredients: recipe.numIngredients,
+                  numSteps: recipe.numInstructions,
                 ),
               ),
             ],

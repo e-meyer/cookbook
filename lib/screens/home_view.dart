@@ -1,5 +1,7 @@
 import 'package:cookbook/components/recipe_card.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
+import 'package:cookbook/models/recipe.dart';
+import 'package:cookbook/services/recipe_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -11,39 +13,52 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<Recipe> _recipes = [];
+
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    getRecipes();
+  }
+
+  Future<void> getRecipes() async {
+    _recipes = await RecipeService().getRecipe();
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorPallete.lightGrey,
-      body: SizedBox(
-        width: double.infinity,
+      body: Padding(
+        padding: const EdgeInsets.only(top: 30),
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 30),
-            child: Column(
-              children: [
-                SvgPicture.asset(
-                  'assets/cookbook-logo.svg',
-                  height: 80,
-                ),
-                const RecipeCard(
-                  recipeImage:
-                      'https:\/\/www.themealdb.com\/images\/media\/meals\/yypwwq1511304979.jpg',
-                  recipeName: 'Spicy Arrabiata Penne',
-                ),
-                const RecipeCard(
-                  recipeImage:
-                      'https:\/\/www.themealdb.com\/images\/media\/meals\/qqwypw1504642429.jpg',
-                  recipeName: 'Vietnamese Grilled Pork',
-                ),
-                const RecipeCard(
-                  recipeImage:
-                      'https:\/\/www.themealdb.com\/images\/media\/meals\/urzj1d1587670726.jpg',
-                  recipeName: 'Big Mac',
-                ),
-              ],
-            ),
+          child: Column(
+            children: [
+              SvgPicture.asset('assets/cookbook-logo.svg'),
+              _isLoading
+                  ? SizedBox(
+                      height: MediaQuery.of(context).size.height,
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: _recipes.length,
+                      itemBuilder: (context, index) {
+                        return RecipeCard(
+                          recipe: _recipes[index],
+                        );
+                      },
+                    ),
+            ],
           ),
         ),
       ),
