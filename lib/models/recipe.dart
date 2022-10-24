@@ -16,17 +16,23 @@ class Recipe {
   });
 
   factory Recipe.fromJson(json) {
-    RegExp exp = RegExp(r'(\b((STEP) \d)+\b)');
+    RegExp stepRegex = RegExp(r'(\b((STEP) \d+)+\b)', caseSensitive: false);
 
     final instructionsList = json['strInstructions']
         .toString()
-        .replaceAll(exp, '')
+        .replaceAll(stepRegex, '')
         .replaceAll('\r\n', ' ')
         .replaceAll('. (', '. ')
         .replaceAll('.) ', '. ')
-        .split('. ');
+        .split('.');
+    // .split(
+    // //   new RegExp(r'([A-z]+)\.'),
+    // // );
 
-    // for (var item in instructionsList) print(item.trimLeft());
+    instructionsList.removeWhere((element) => element.isEmpty);
+    instructionsList.removeWhere((element) => double.tryParse(element) != null);
+
+    for (var item in instructionsList) print(item.trimLeft());
 
     final ingredientsList = [];
     int ingIndex = 1;

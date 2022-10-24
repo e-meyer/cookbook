@@ -1,5 +1,5 @@
 import 'package:cookbook/components/recipe_card.dart';
-import 'package:cookbook/components/shimmer_recipe_card_skeleton.dart';
+import 'package:cookbook/components/loading_skeletons/home_card_skeleton.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:cookbook/models/recipe.dart';
 import 'package:cookbook/services/recipe_service.dart';
@@ -15,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with AutomaticKeepAliveClientMixin {
-  List<Recipe> _recipes = [];
+  List<Recipe>? _recipes = [];
 
   bool _isLoading = true;
 
@@ -26,8 +26,8 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Future<void> getRecipes() async {
-    _recipes = await RecipeService().getRecipes();
-    _recipes.shuffle();
+    _recipes = await RecipeService().getRecipes(searchArgs: 'Cevapi Sausages');
+    _recipes!.shuffle();
     setState(() {
       _isLoading = false;
     });
@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen>
       _isLoading = true;
     });
     _recipes = await RecipeService().getRecipes();
-    _recipes.shuffle();
+    _recipes!.shuffle();
     setState(() {
       _isLoading = false;
     });
@@ -66,17 +66,17 @@ class _HomeScreenState extends State<HomeScreen>
                           shrinkWrap: true,
                           itemBuilder: (context, index) => RecipeCardSkeleton(),
                           separatorBuilder: (context, index) =>
-                              const SizedBox(height: 10),
+                              const SizedBox(height: 40),
                           itemCount: 2,
                         ),
                       )
                     : ListView.builder(
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(),
-                        itemCount: _recipes.length,
+                        itemCount: _recipes!.length,
                         itemBuilder: (context, index) {
                           return RecipeCard(
-                            recipe: _recipes[index],
+                            recipe: _recipes![index],
                           );
                         },
                       ),
