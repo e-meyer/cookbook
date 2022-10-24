@@ -12,7 +12,7 @@ class CookbookApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Cook Book',
-      initialRoute: 'home',
+      initialRoute: 'navigator',
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
