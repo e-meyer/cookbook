@@ -35,7 +35,7 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsets.only(top: 360, left: 30),
+                  padding: EdgeInsets.only(top: 360, left: 20),
                   child: FavouriteButton(),
                 ),
                 const Align(
@@ -47,7 +47,6 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
             TabBarSelector(
               recipe: widget.recipe,
             ),
-            
           ],
         ),
       ),

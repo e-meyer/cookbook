@@ -1,8 +1,8 @@
 import 'package:cookbook/components/tab_bar_contents/brief.dart';
 import 'package:cookbook/components/tab_bar_contents/ingredients.dart';
+import 'package:cookbook/components/tab_bar_text.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:cookbook/models/recipe.dart';
 
 class TabBarSelector extends StatefulWidget {
@@ -39,7 +39,7 @@ class _TabBarSelectorState extends State<TabBarSelector>
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Container(
@@ -68,18 +68,12 @@ class _TabBarSelectorState extends State<TabBarSelector>
                             ),
                           ],
                         ),
-                        tabs: [
+                        tabs: const [
                           Tab(
-                            child: Text(
-                              'INGREDIENTS',
-                              style: GoogleFonts.montserrat(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
+                            child: TabBarText(tabName: 'Ingredients'),
                           ),
                           Tab(
-                            text: 'BRIEFLY',
+                            child: TabBarText(tabName: 'Briefly'),
                           ),
                         ],
                       ),
