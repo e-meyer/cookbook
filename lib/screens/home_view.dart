@@ -1,4 +1,5 @@
 import 'package:cookbook/components/recipe_card.dart';
+import 'package:cookbook/components/shimmer_recipe_card_skeleton.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:cookbook/models/recipe.dart';
 import 'package:cookbook/services/recipe_service.dart';
@@ -51,17 +52,22 @@ class _HomeScreenState extends State<HomeScreen>
       body: Padding(
         padding: const EdgeInsets.only(top: 30),
         child: RefreshIndicator(
+          color: ColorPallete.darkOrange,
           onRefresh: refresh,
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 SvgPicture.asset('assets/cookbook-logo.svg'),
                 _isLoading
-                    ? SizedBox(
-                        height: MediaQuery.of(context).size.height,
-                        child: const Center(
-                          child: CircularProgressIndicator(),
+                    ? Flexible(
+                        child: ListView.separated(
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) => RecipeCardSkeleton(),
+                          separatorBuilder: (context, index) =>
+                              const SizedBox(height: 10),
+                          itemCount: 2,
                         ),
                       )
                     : ListView.builder(
