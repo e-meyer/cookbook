@@ -5,11 +5,16 @@ import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:cookbook/models/recipe.dart';
 import 'package:flutter/material.dart';
 
-class RecipeDetailsScreen extends StatelessWidget {
+class RecipeDetailsScreen extends StatefulWidget {
   const RecipeDetailsScreen({super.key, required this.recipe});
 
   final Recipe recipe;
 
+  @override
+  State<RecipeDetailsScreen> createState() => _RecipeDetailsScreenState();
+}
+
+class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +28,7 @@ class RecipeDetailsScreen extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: FadeInImage.assetNetwork(
                   placeholder: 'assets/loading-gif.gif',
-                  image: recipe.image,
+                  image: widget.recipe.image,
                 ),
               ),
               const Padding(
@@ -41,9 +46,9 @@ class RecipeDetailsScreen extends StatelessWidget {
               vertical: 30,
             ),
             child: RecipeDetails(
-              recipeName: recipe.name,
-              numIngredients: 5,
-              numSteps: 3,
+              recipeName: widget.recipe.name,
+              numIngredients: widget.recipe.numIngredients,
+              numInstructions: widget.recipe.numInstructions,
             ),
           ),
         ],

@@ -71,7 +71,7 @@ class RecipeCard extends StatelessWidget {
                 child: RecipeDetails(
                   recipeName: recipe.name,
                   numIngredients: recipe.numIngredients,
-                  numSteps: recipe.numInstructions,
+                  numInstructions: recipe.numInstructions,
                 ),
               ),
             ],

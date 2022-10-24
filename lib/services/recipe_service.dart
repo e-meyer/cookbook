@@ -21,7 +21,7 @@ class RecipeService {
     return '${_getUrl()}$searchRequest';
   }
 
-  Future<List<Recipe>> getRecipe({String? searchArgs}) async {
+  Future<List<Recipe>> getRecipes({String? searchArgs}) async {
     if (searchArgs == null) {
       searchArgs = _getRandomChar();
     }

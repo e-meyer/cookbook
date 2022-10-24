@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RecipeDetails extends StatelessWidget {
-  const RecipeDetails({super.key, required this.recipeName, required this.numSteps, required this.numIngredients});
+  const RecipeDetails({
+    super.key,
+    required this.recipeName,
+    required this.numInstructions,
+    required this.numIngredients,
+  });
 
   final String recipeName;
-  final int numSteps;
+  final int numInstructions;
   final int numIngredients;
 
   @override
@@ -57,7 +62,7 @@ class RecipeDetails extends StatelessWidget {
               width: 5,
             ),
             Text(
-              '$numSteps steps',
+              '$numInstructions steps',
               style: GoogleFonts.montserrat(
                 color: ColorPallete.secondaryText,
                 fontWeight: FontWeight.w400,

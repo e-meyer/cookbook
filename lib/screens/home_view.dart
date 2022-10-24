@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Future<void> getRecipes() async {
-    _recipes = await RecipeService().getRecipe();
+    _recipes = await RecipeService().getRecipes();
     _recipes.shuffle();
     setState(() {
       _isLoading = false;
@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen>
     setState(() {
       _isLoading = true;
     });
-    _recipes = await RecipeService().getRecipe();
+    _recipes = await RecipeService().getRecipes();
     _recipes.shuffle();
     setState(() {
       _isLoading = false;
