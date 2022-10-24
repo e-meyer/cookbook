@@ -21,24 +21,24 @@ class RecipeService {
     return '${_getUrl()}$searchRequest';
   }
 
-  Future<List<Recipe>> getRecipes({String? searchArgs}) async {
+  Future<List<Recipe>?> getRecipes({String? searchArgs}) async {
     if (searchArgs == null) {
       searchArgs = _getRandomChar();
     }
 
     print('${_getSearchRequest()}$searchArgs');
 
-    final response = await client.get(
-      Uri.parse('${_getSearchRequest()}$searchArgs'),
-    );
+    final response =
+        await client.get(Uri.parse('${_getSearchRequest()}$searchArgs'));
 
     if (response.statusCode != 200) {
       throw HttpException(response.body);
     }
 
     Map data = jsonDecode(response.body);
-    List tempRecipes = [];
+    if (data['meals'] == null) return null;
 
+    List tempRecipes = [];
     for (var recipe in data['meals']) {
       tempRecipes.add(recipe);
     }
