@@ -32,7 +32,7 @@ class Recipe {
     instructionsList.removeWhere((element) => element.isEmpty);
     instructionsList.removeWhere((element) => double.tryParse(element) != null);
 
-    for (var item in instructionsList) print(item.trimLeft());
+    // for (var item in instructionsList) print(item.trimLeft());
 
     final ingredientsList = [];
     int ingIndex = 1;
