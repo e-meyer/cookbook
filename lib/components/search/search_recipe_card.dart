@@ -56,16 +56,34 @@ class SearchRecipeCard extends StatelessWidget {
                 bottom: 10,
                 left: 10,
               ),
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: Text(
-                  recipe.name,
-                  style: GoogleFonts.montserrat(
-                    fontSize: 12,
-                    color: ColorPallete.plainWhite,
-                    fontWeight: FontWeight.w600,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Text(
+                      recipe.name,
+                      style: GoogleFonts.montserrat(
+                        fontSize: 14,
+                        color: ColorPallete.plainWhite,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                   ),
-                ),
+                  const SizedBox(
+                    height: 3,
+                  ),
+                  Text(
+                    recipe.numIngredients >= 8
+                        ? recipe.numIngredients > 14
+                            ? 'Hard'
+                            : 'Medium'
+                        : 'Easy',
+                    style: GoogleFonts.montserrat(
+                        fontSize: 12, color: ColorPallete.darkGrey),
+                  ),
+                ],
               ),
             ),
           ],
