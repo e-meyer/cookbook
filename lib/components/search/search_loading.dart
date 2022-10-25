@@ -2,8 +2,8 @@ import 'package:cookbook/components/search/search_skeleton_card.dart';
 import 'package:cookbook/components/skeleton_background.dart';
 import 'package:flutter/material.dart';
 
-class SearchSkeleton extends StatelessWidget {
-  const SearchSkeleton({
+class SearchLoading extends StatelessWidget {
+  const SearchLoading({
     Key? key,
   }) : super(key: key);
 
@@ -29,7 +29,7 @@ class SearchSkeleton extends StatelessWidget {
           shrinkWrap: true,
           itemCount: 8,
           itemBuilder: (context, index) {
-            return const SearchCardSkeleton();
+            return const SearchLoadingCardSkeleton();
           },
         ),
       ],

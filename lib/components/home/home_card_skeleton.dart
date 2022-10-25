@@ -1,8 +1,8 @@
 import 'package:cookbook/components/skeleton_background.dart';
 import 'package:flutter/material.dart';
 
-class RecipeCardSkeleton extends StatelessWidget {
-  const RecipeCardSkeleton({
+class HomeLoadingCardSkeleton extends StatelessWidget {
+  const HomeLoadingCardSkeleton({
     Key? key,
   }) : super(key: key);
 

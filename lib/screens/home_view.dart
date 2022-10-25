@@ -1,5 +1,7 @@
+import 'package:cookbook/components/home/home_loading.dart';
 import 'package:cookbook/components/home/home_recipe_card.dart';
 import 'package:cookbook/components/home/home_card_skeleton.dart';
+import 'package:cookbook/components/home/home_result.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:cookbook/models/recipe.dart';
 import 'package:cookbook/services/recipe_service.dart';
@@ -61,25 +63,8 @@ class _HomeScreenState extends State<HomeScreen>
               children: [
                 SvgPicture.asset('assets/cookbook-logo.svg'),
                 _isLoading
-                    ? Flexible(
-                        child: ListView.separated(
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) => RecipeCardSkeleton(),
-                          separatorBuilder: (context, index) =>
-                              const SizedBox(height: 30),
-                          itemCount: 2,
-                        ),
-                      )
-                    : ListView.builder(
-                        shrinkWrap: true,
-                        physics: const BouncingScrollPhysics(),
-                        itemCount: _recipes!.length,
-                        itemBuilder: (context, index) {
-                          return RecipeCard(
-                            recipe: _recipes![index],
-                          );
-                        },
-                      ),
+                    ? const HomeLoading()
+                    : HomeResults(recipes: _recipes!),
               ],
             ),
           ),

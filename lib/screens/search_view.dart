@@ -1,4 +1,4 @@
-import 'package:cookbook/components/search/search_skeleton.dart';
+import 'package:cookbook/components/search/search_loading.dart';
 import 'package:cookbook/components/search/search_not_found.dart';
 import 'package:cookbook/components/search/search_bar.dart';
 import 'package:cookbook/components/search/search_result.dart';
@@ -58,7 +58,7 @@ class _SearchScreenState extends State<SearchScreen>
                 const SizedBox(height: 8),
                 Searchbar(getRecipes: getRecipes),
                 _isLoading
-                    ? const SearchSkeleton()
+                    ? const SearchLoading()
                     : _recipes != null
                         ? SearchResults(recipes: _recipes!)
                         : const SearchNotFound(),
