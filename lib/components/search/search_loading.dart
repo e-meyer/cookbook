@@ -1,4 +1,3 @@
-import 'package:cookbook/components/search/search_skeleton_card.dart';
 import 'package:cookbook/components/skeleton_background.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +17,7 @@ class SearchLoading extends StatelessWidget {
         const Skeleton(
           height: 26,
           width: 140,
+          radius: 30,
         ),
         GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
@@ -29,7 +29,11 @@ class SearchLoading extends StatelessWidget {
           shrinkWrap: true,
           itemCount: 8,
           itemBuilder: (context, index) {
-            return const SearchLoadingCardSkeleton();
+            return const Skeleton(
+              height: 160,
+              width: 160,
+              radius: 15,
+            );
           },
         ),
       ],

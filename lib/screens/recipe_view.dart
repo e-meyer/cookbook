@@ -1,5 +1,4 @@
 import 'package:cookbook/components/favourite_button.dart';
-import 'package:cookbook/components/recipe_details.dart';
 import 'package:cookbook/components/close_button.dart';
 import 'package:cookbook/components/recipe_view_tabbar/tab_bar.dart';
 import 'package:cookbook/helpers/colorpallete.dart';

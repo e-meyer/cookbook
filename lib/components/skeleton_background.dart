@@ -1,22 +1,38 @@
+import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
-class Skeleton extends StatelessWidget {
+class Skeleton extends StatefulWidget {
   const Skeleton({
     Key? key,
-    this.height,
-    this.width,
+    required this.height,
+    required this.width,
+    required this.radius,
   }) : super(key: key);
 
   final double? height, width;
+  final double radius;
 
   @override
+  State<Skeleton> createState() => _SkeletonState();
+}
+
+class _SkeletonState extends State<Skeleton> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width,
-      decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.04),
-        borderRadius: const BorderRadius.all(Radius.circular(30)),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(widget.radius),
+      child: Shimmer.fromColors(
+        period: const Duration(milliseconds: 800),
+        baseColor: ColorPallete.darkGrey,
+        highlightColor: ColorPallete.defaultGrey,
+        child: Container(
+          height: widget.height,
+          width: widget.width,
+          decoration: BoxDecoration(
+            color: ColorPallete.defaultGrey.withOpacity(0.25),
+          ),
+        ),
       ),
     );
   }

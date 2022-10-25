@@ -1,6 +1,4 @@
 import 'package:cookbook/components/home/home_loading.dart';
-import 'package:cookbook/components/home/home_recipe_card.dart';
-import 'package:cookbook/components/home/home_card_skeleton.dart';
 import 'package:cookbook/components/home/home_result.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:cookbook/models/recipe.dart';

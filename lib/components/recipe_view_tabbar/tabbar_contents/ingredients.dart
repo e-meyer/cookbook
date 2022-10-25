@@ -9,7 +9,7 @@ class Ingredients extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: ColorPallete.lightGrey,
       body: Text('Ingredients'),
     );

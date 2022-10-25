@@ -16,6 +16,7 @@ class HomeLoadingCardSkeleton extends StatelessWidget {
             const Skeleton(
               height: 345,
               width: 345,
+              radius: 30,
             ),
             const SizedBox(
               height: 28,
@@ -23,6 +24,7 @@ class HomeLoadingCardSkeleton extends StatelessWidget {
             const Skeleton(
               height: 20,
               width: 190,
+              radius: 30,
             ),
             const SizedBox(
               height: 10,
@@ -33,6 +35,7 @@ class HomeLoadingCardSkeleton extends StatelessWidget {
                 Skeleton(
                   height: 20,
                   width: 110,
+                  radius: 30,
                 ),
                 SizedBox(
                   width: 20,
@@ -40,6 +43,7 @@ class HomeLoadingCardSkeleton extends StatelessWidget {
                 Skeleton(
                   height: 20,
                   width: 60,
+                  radius: 30,
                 ),
               ],
             )
