@@ -42,7 +42,7 @@ class _SearchbarState extends State<Searchbar> {
           fontSize: 15,
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
           borderSide: const BorderSide(
             color: ColorPallete.lightGrey,
           ),

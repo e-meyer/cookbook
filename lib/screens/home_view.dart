@@ -1,5 +1,5 @@
-import 'package:cookbook/components/recipe_card.dart';
-import 'package:cookbook/components/loading_skeletons/home_card_skeleton.dart';
+import 'package:cookbook/components/home/home_recipe_card.dart';
+import 'package:cookbook/components/home/home_card_skeleton.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:cookbook/models/recipe.dart';
 import 'package:cookbook/services/recipe_service.dart';
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen>
                           shrinkWrap: true,
                           itemBuilder: (context, index) => RecipeCardSkeleton(),
                           separatorBuilder: (context, index) =>
-                              const SizedBox(height: 40),
+                              const SizedBox(height: 30),
                           itemCount: 2,
                         ),
                       )

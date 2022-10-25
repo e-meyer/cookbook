@@ -12,11 +12,10 @@ class SearchSkeleton extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
-        
-        Skeleton(
+        const Skeleton(
           height: 26,
           width: 140,
         ),

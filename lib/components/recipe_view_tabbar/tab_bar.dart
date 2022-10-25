@@ -35,7 +35,7 @@ class _TabBarSelectorState extends State<TabBarSelector>
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
@@ -86,7 +86,7 @@ class _TabBarSelectorState extends State<TabBarSelector>
                   physics: const BouncingScrollPhysics(),
                   controller: tabController,
                   children: [
-                    Ingredients(),
+                    Ingredients(recipe: widget.recipe),
                     Brief(recipe: widget.recipe),
                   ],
                 ),

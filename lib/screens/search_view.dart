@@ -1,12 +1,7 @@
 import 'package:cookbook/components/search/search_skeleton.dart';
-import 'package:cookbook/components/search/search_skeleton_card.dart';
 import 'package:cookbook/components/search/search_not_found.dart';
-import 'package:cookbook/components/search/search_recipe_card.dart';
 import 'package:cookbook/components/search/search_bar.dart';
 import 'package:cookbook/components/search/search_result.dart';
-import 'package:cookbook/helpers/debouncer.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cookbook/services/recipe_service.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:cookbook/models/recipe.dart';
@@ -31,7 +26,6 @@ class _SearchScreenState extends State<SearchScreen>
       _isLoading = true;
     });
     _recipes = await RecipeService().getRecipes(searchArgs: searchArgs);
-    print('RECIPES $_recipes');
     setState(() {
       _isLoading = false;
     });
@@ -47,7 +41,10 @@ class _SearchScreenState extends State<SearchScreen>
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+            padding: const EdgeInsets.symmetric(
+              vertical: 40,
+              horizontal: 20,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -55,7 +52,7 @@ class _SearchScreenState extends State<SearchScreen>
                   'Search for recipes',
                   style: GoogleFonts.montserrat(
                     fontSize: 22,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 const SizedBox(height: 8),

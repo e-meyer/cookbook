@@ -9,7 +9,7 @@ class RecipeCardSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 420,
+      height: 440,
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -18,7 +18,7 @@ class RecipeCardSkeleton extends StatelessWidget {
               width: 345,
             ),
             const SizedBox(
-              height: 20,
+              height: 28,
             ),
             const Skeleton(
               height: 20,

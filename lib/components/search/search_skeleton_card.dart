@@ -1,4 +1,3 @@
-import 'package:cookbook/components/skeleton_background.dart';
 import 'package:flutter/material.dart';
 
 class SearchCardSkeleton extends StatelessWidget {
