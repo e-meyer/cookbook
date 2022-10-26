@@ -48,7 +48,7 @@ class IngredientsStructure extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Text(
-                ingredientMeasure,
+                ingredientMeasure.toLowerCase(),
                 style: GoogleFonts.montserrat(
                   color: ColorPallete.primaryText,
                   fontSize: 13,
