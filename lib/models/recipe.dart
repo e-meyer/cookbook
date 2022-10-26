@@ -1,23 +1,22 @@
 class Recipe {
   final String name;
   final String image;
-  final int numIngredients;
   final List ingredientsList;
-  final int numInstructions;
   final List instructionsList;
+  final List ingredientsMeasure;
 
   Recipe({
+    required this.ingredientsMeasure,
     required this.name,
     required this.image,
-    required this.numIngredients,
     required this.ingredientsList,
-    required this.numInstructions,
     required this.instructionsList,
   });
 
   factory Recipe.fromJson(json) {
     RegExp stepRegex = RegExp(r'(\b((STEP) \d+)+\b)', caseSensitive: false);
 
+    // getting the instructions, cleaning the list recieved as much as possible
     final instructionsList = json['strInstructions']
         .toString()
         .replaceAll(stepRegex, '')
@@ -25,28 +24,33 @@ class Recipe {
         .replaceAll('. (', '. ')
         .replaceAll('.) ', '. ')
         .split('.');
-    // .split(
-    // //   new RegExp(r'([A-z]+)\.'),
-    // // );
 
     instructionsList.removeWhere((element) => element.isEmpty);
     instructionsList.removeWhere((element) => double.tryParse(element) != null);
 
-    // for (var item in instructionsList) print(item.trimLeft());
-
+    // putting the ingredients recieved from the API in a list
     final ingredientsList = [];
-    int ingIndex = 1;
-    while (json['strIngredient$ingIndex'] != '' &&
-        json['strIngredient$ingIndex'] != null) {
-      ingredientsList.add(json['strIngredient$ingIndex']);
-      ingIndex++;
+    int index = 1;
+
+    while (json['strIngredient$index'] != '' &&
+        json['strIngredient$index'] != null) {
+      ingredientsList.add(json['strIngredient$index']);
+      index++;
+    }
+
+    // putting the ingredients measure recieved from the API in a list
+    final ingredientsMeasure = [];
+    index = 1;
+
+    while (json['strMeasure$index'] != '' && json['strMeasure$index'] != null) {
+      ingredientsMeasure.add(json['strMeasure$index']);
+      index++;
     }
 
     return Recipe(
       name: json['strMeal'] as String,
       image: json['strMealThumb'] as String,
-      numIngredients: ingredientsList.length,
-      numInstructions: instructionsList.length,
+      ingredientsMeasure: ingredientsMeasure,
       ingredientsList: ingredientsList,
       instructionsList: instructionsList,
     );

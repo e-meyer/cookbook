@@ -5,12 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 class SearchRecipeCardText extends StatelessWidget {
   const SearchRecipeCardText({
     Key? key,
-    required this.numIngredients,
+    required this.numInstructions,
     required this.recipeName,
   }) : super(key: key);
 
   final String recipeName;
-  final int numIngredients;
+  final int numInstructions;
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +38,8 @@ class SearchRecipeCardText extends StatelessWidget {
             height: 3,
           ),
           Text(
-            numIngredients >= 8
-                ? numIngredients > 14
+            numInstructions >= 10
+                ? numInstructions > 20
                     ? 'Hard'
                     : 'Medium'
                 : 'Easy',

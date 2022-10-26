@@ -53,7 +53,7 @@ class SearchRecipeCard extends StatelessWidget {
               ),
             ),
             SearchRecipeCardText(
-              numIngredients: recipe.numIngredients,
+              numInstructions: recipe.instructionsList.length,
               recipeName: recipe.name,
             ),
           ],

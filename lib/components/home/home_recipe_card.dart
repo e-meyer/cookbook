@@ -20,9 +20,9 @@ class RecipeCard extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: <BoxShadow>[
             BoxShadow(
-              color: const Color(0xFF808080).withOpacity(0.1),
-              blurRadius: 10,
-              offset: const Offset(0, 15),
+              color: const Color(0xFF808080).withOpacity(0.3),
+              blurRadius: 20,
+              offset: const Offset(0, 0),
             ),
           ],
         ),
@@ -70,8 +70,8 @@ class RecipeCard extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 5, bottom: 35),
                 child: RecipeDetails(
                   recipeName: recipe.name,
-                  numIngredients: recipe.numIngredients,
-                  numInstructions: recipe.numInstructions,
+                  numIngredients: recipe.ingredientsList.length,
+                  numInstructions: recipe.instructionsList.length,
                 ),
               ),
             ],

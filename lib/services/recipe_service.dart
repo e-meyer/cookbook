@@ -22,9 +22,9 @@ class RecipeService {
   }
 
   Future<List<Recipe>?> getRecipes({String? searchArgs}) async {
-    searchArgs ??= _getRandomChar();
+    if (searchArgs == 'empty') return null;
 
-    // print('${_getSearchRequest()}$searchArgs');
+    searchArgs ??= _getRandomChar();
 
     final response =
         await client.get(Uri.parse('${_getSearchRequest()}$searchArgs'));
