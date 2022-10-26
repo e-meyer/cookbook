@@ -68,25 +68,28 @@ class Ingredients extends StatelessWidget {
             Expanded(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: ListView.separated(
-                  padding: EdgeInsets.zero,
-                  itemCount: recipe.ingredientsList.length,
-                  itemBuilder: (context, index) {
-                    greenARGB += 16;
-                    return IngredientsStructure(
-                      ingredientName: recipe.ingredientsList[index],
-                      ingredientMeasure: recipe.ingredientsMeasure[index],
-                      color: Color.fromARGB(190, 250, greenARGB, 60),
-                    );
-                  },
-                  separatorBuilder: (context, index) {
-                    return Container(
-                      height: 1,
-                      decoration: const BoxDecoration(
-                        color: ColorPallete.lightGrey,
-                      ),
-                    );
-                  },
+                child: ScrollConfiguration(
+                  behavior: const ScrollBehavior().copyWith(overscroll: false),
+                  child: ListView.separated(
+                    padding: EdgeInsets.zero,
+                    itemCount: recipe.ingredientsList.length,
+                    itemBuilder: (context, index) {
+                      greenARGB += 16;
+                      return IngredientsStructure(
+                        ingredientName: recipe.ingredientsList[index],
+                        ingredientMeasure: recipe.ingredientsMeasure[index],
+                        color: Color.fromARGB(190, 250, greenARGB, 60),
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return Container(
+                        height: 1,
+                        decoration: const BoxDecoration(
+                          color: ColorPallete.lightGrey,
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

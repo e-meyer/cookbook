@@ -29,11 +29,11 @@ class Brief extends StatelessWidget {
           ),
           ListView.builder(
             padding: EdgeInsets.zero,
-            physics: const BouncingScrollPhysics(),
+            physics: const PageScrollPhysics(),
             shrinkWrap: true,
             itemCount: recipe.instructionsList.length,
             itemBuilder: (context, index) {
-              greenARGB  += 10;
+              greenARGB += 10;
               return Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 5,

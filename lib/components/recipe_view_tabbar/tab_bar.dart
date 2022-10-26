@@ -36,7 +36,7 @@ class _TabBarSelectorState extends State<TabBarSelector>
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: SizedBox(
-          height: MediaQuery.of(context).size.height,
+          height: MediaQuery.of(context).size.height * 0.6,
           child: Column(
             children: [
               const SizedBox(
@@ -83,7 +83,6 @@ class _TabBarSelectorState extends State<TabBarSelector>
               ),
               Expanded(
                 child: TabBarView(
-                  physics: const BouncingScrollPhysics(),
                   controller: tabController,
                   children: [
                     Ingredients(recipe: widget.recipe),
