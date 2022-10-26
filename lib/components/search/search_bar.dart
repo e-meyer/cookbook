@@ -5,7 +5,7 @@ import 'package:cookbook/helpers/debouncer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Searchbar extends StatefulWidget {
-  Searchbar({
+  const Searchbar({
     super.key,
     required this.getRecipes,
   });
@@ -24,7 +24,11 @@ class _SearchbarState extends State<Searchbar> {
     return TextField(
       onChanged: (string) {
         _debouncer.run(() {
-          widget.getRecipes(string);
+          if (string.isEmpty) {
+            widget.getRecipes('empty');
+          } else {
+            widget.getRecipes(string);
+          }
         });
       },
       cursorColor: ColorPallete.darkOrange,

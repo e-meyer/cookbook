@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:cookbook/helpers/colorpallete.dart';
 
 class SearchNotFound extends StatelessWidget {
   const SearchNotFound({super.key});
@@ -12,7 +11,7 @@ class SearchNotFound extends StatelessWidget {
       child: Center(
         child: SvgPicture.asset(
           'assets/icons/not-found.svg',
-          color: ColorPallete.defaultGrey,
+          width: MediaQuery.of(context).size.width * 0.8,
         ),
       ),
     );

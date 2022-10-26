@@ -52,7 +52,7 @@ class _TabBarSelectorState extends State<TabBarSelector>
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.all(4.0),
                       child: TabBar(
                         labelColor: ColorPallete.primaryText,
                         unselectedLabelColor: ColorPallete.secondaryText,
