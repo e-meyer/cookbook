@@ -41,6 +41,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
       backgroundColor: ColorPallete.lightGrey,
       // body: _screens[_selectedIndex],
       body: PageView(
+        scrollBehavior: MyCustomScrollBehavior(),
         controller: _pageController,
         onPageChanged: _onPageChanged,
         children: _screens,
@@ -82,5 +83,13 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
         ),
       ),
     );
+  }
+}
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Widget buildOverscrollIndicator(
+      BuildContext context, Widget child, ScrollableDetails details) {
+    return child;
   }
 }
