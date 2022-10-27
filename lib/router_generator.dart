@@ -1,9 +1,8 @@
+import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:cookbook/models/recipe.dart';
-import 'package:cookbook/screens/authentication_view.dart';
 import 'package:cookbook/screens/home_view.dart';
 import 'package:cookbook/screens/navigator.dart';
 import 'package:cookbook/screens/recipe_view.dart';
-import 'package:cookbook/screens/register_view.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -14,10 +13,6 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const NavigatorScreen());
       case 'home':
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-      case 'auth':
-        return MaterialPageRoute(builder: (_) => const AuthenticationScreen());
-      case 'register':
-        return MaterialPageRoute(builder: (_) => const RegisterScreen());
       case 'recipe-details':
         if (args is Recipe) {
           return MaterialPageRoute(
@@ -36,7 +31,7 @@ class RouteGenerator {
     return MaterialPageRoute(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green,
+          backgroundColor: ColorPallete.darkOrange,
           title: const Text('Error'),
         ),
         body: const Center(

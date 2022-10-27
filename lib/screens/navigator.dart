@@ -22,7 +22,6 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
     const HomeScreen(),
     const SearchScreen(),
     const FavouritesScreen(),
-    const ProfileScreen(),
   ];
 
   void _onPageChanged(int index) {
@@ -70,11 +69,6 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
             CustomNavbarItem.navbarItem(
               'assets/icons/favourite.svg',
               2,
-              _selectedIndex,
-            ),
-            CustomNavbarItem.navbarItem(
-              'assets/icons/profile.svg',
-              3,
               _selectedIndex,
             ),
           ],

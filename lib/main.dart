@@ -7,7 +7,7 @@ void main() {
   runApp(
     ChangeNotifierProvider(
       create: (context) => FavouritesProvider(),
-      child: CookbookApp(),
+      child: const CookbookApp(),
     ),
   );
 }
