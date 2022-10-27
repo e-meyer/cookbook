@@ -1,8 +1,15 @@
+import 'package:cookbook/providers/favourites_provider.dart';
 import 'package:cookbook/router_generator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const CookbookApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => FavouritesProvider(),
+      child: CookbookApp(),
+    ),
+  );
 }
 
 class CookbookApp extends StatelessWidget {

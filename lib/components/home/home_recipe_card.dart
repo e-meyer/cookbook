@@ -22,7 +22,7 @@ class RecipeCard extends StatelessWidget {
             BoxShadow(
               color: const Color(0xFF808080).withOpacity(0.3),
               blurRadius: 20,
-              offset: const Offset(0, 0),
+              // offset: const Offset(0, 0),
             ),
           ],
         ),
@@ -56,13 +56,15 @@ class RecipeCard extends StatelessWidget {
                       width: 345,
                       child: Image.network(
                         recipe.image,
-                        fit: BoxFit.fill,
+                        fit: BoxFit.fitHeight,
                       ),
                     ),
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(top: 310, left: 10),
-                    child: FavouriteButton(),
+                    child: FavouriteButton(
+                      recipe: recipe,
+                    ),
                   ),
                 ],
               ),

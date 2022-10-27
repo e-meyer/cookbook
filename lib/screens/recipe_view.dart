@@ -19,34 +19,41 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorPallete.lightGrey,
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Stack(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: FadeInImage.assetNetwork(
-                    placeholder: 'assets/loading-gif.gif',
-                    image: widget.recipe.image,
+      body: ScrollConfiguration(
+        behavior: const ScrollBehavior().copyWith(overscroll: false),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Stack(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: FadeInImage.assetNetwork(
+                      placeholder: 'assets/loading-gif.gif',
+                      image: widget.recipe.image,
+                    ),
                   ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 360, left: 20),
-                  child: FavouriteButton(),
-                ),
-                const Align(
-                  alignment: Alignment.topRight,
-                  child: CloseViewButton(),
-                ),
-              ],
-            ),
-            TabBarSelector(
-              recipe: widget.recipe,
-            ),
-          ],
+                  Positioned.fill(
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 10, bottom: 10),
+                      child: Align(
+                        alignment: Alignment.bottomLeft,
+                        child: FavouriteButton(recipe: widget.recipe),
+                      ),
+                    ),
+                  ),
+                  const Align(
+                    alignment: Alignment.topRight,
+                    child: CloseViewButton(),
+                  ),
+                ],
+              ),
+              TabBarSelector(
+                recipe: widget.recipe,
+              ),
+            ],
+          ),
         ),
       ),
     );
