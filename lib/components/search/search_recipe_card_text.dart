@@ -41,7 +41,7 @@ class SearchRecipeCardText extends StatelessWidget {
             numInstructions >= 10
                 ? numInstructions > 20
                     ? 'Hard'
-                    : 'Medium'
+                    : 'Intermediate'
                 : 'Easy',
             style: GoogleFonts.montserrat(
               fontSize: 12,

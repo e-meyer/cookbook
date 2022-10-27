@@ -4,6 +4,7 @@ class Recipe {
   final List ingredientsList;
   final List instructionsList;
   final List ingredientsMeasure;
+  bool isFavourite;
 
   Recipe({
     required this.ingredientsMeasure,
@@ -11,12 +12,32 @@ class Recipe {
     required this.image,
     required this.ingredientsList,
     required this.instructionsList,
+    required this.isFavourite,
   });
 
   factory Recipe.fromJson(json) {
+    // getting the instructions, cleaning the list recieved as much as possible
+    final instructionsList = cleanInstructions(json);
+
+    // putting the ingredients recieved from the API in a list
+    final ingredientsList = recieveIngredients(json);
+
+    // putting the ingredients measure recieved from the API in a list
+    final ingredientsMeasure = recieveMeasures(json);
+
+    return Recipe(
+      name: json['strMeal'] as String,
+      image: json['strMealThumb'] as String,
+      ingredientsMeasure: ingredientsMeasure,
+      ingredientsList: ingredientsList,
+      instructionsList: instructionsList,
+      isFavourite: false,
+    );
+  }
+
+  static cleanInstructions(json) {
     RegExp stepRegex = RegExp(r'(\b((STEP) \d+)+\b)', caseSensitive: false);
 
-    // getting the instructions, cleaning the list recieved as much as possible
     final instructionsList = json['strInstructions']
         .toString()
         .replaceAll(stepRegex, '')
@@ -28,7 +49,10 @@ class Recipe {
     instructionsList.removeWhere((element) => element.isEmpty);
     instructionsList.removeWhere((element) => double.tryParse(element) != null);
 
-    // putting the ingredients recieved from the API in a list
+    return instructionsList;
+  }
+
+  static recieveIngredients(json) {
     final ingredientsList = [];
     int index = 1;
 
@@ -38,22 +62,19 @@ class Recipe {
       index++;
     }
 
-    // putting the ingredients measure recieved from the API in a list
+    return ingredientsList;
+  }
+
+  static recieveMeasures(json) {
     final ingredientsMeasure = [];
-    index = 1;
+    int index = 1;
 
     while (json['strMeasure$index'] != '' && json['strMeasure$index'] != null) {
       ingredientsMeasure.add(json['strMeasure$index']);
       index++;
     }
 
-    return Recipe(
-      name: json['strMeal'] as String,
-      image: json['strMealThumb'] as String,
-      ingredientsMeasure: ingredientsMeasure,
-      ingredientsList: ingredientsList,
-      instructionsList: instructionsList,
-    );
+    return ingredientsMeasure;
   }
 
   static List<Recipe> recipesFromSnapshot(List snapshot) {
