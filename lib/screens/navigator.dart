@@ -1,7 +1,6 @@
 import 'package:cookbook/components/custom_navbar_item.dart';
 import 'package:cookbook/helpers/colorpallete.dart';
 import 'package:cookbook/screens/favourites_view.dart';
-import 'package:cookbook/screens/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:cookbook/screens/home_view.dart';
 import 'package:cookbook/screens/search_view.dart';
